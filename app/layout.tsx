@@ -1,26 +1,40 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
+import { Lora, Manrope } from "next/font/google";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "../components/provider";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-anchor-lora",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-anchor-manrope",
+});
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-8G0N6WDBEE";
+
 export const metadata: Metadata = {
-  title: "Next.js Starter Kit - Launch Your SAAS",
+  metadataBase: new URL("https://www.anchorreset.com"),
+  title: "Anchor, a 3-minute mental reset for people who are usually the strong one.",
   description:
-    "A modern, full-stack Next.js starter kit with authentication, payments, and dashboard. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
+    "Come back to yourself in 3 quiet minutes. A private reset you can do anywhere. No journaling. No talking. No explaining.",
+  alternates: {
+    canonical: "https://www.anchorreset.com/",
+  },
   openGraph: {
-    title: "Next.js Starter Kit",
+    title: "Anchor",
     description:
-      "A modern, full-stack Next.js starter kit with authentication, payments, and dashboard. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-    url: "nextstarter.xyz",
-    siteName: "Next.js Starter Kit",
-    images: [
-      {
-        url: "https://jdj14ctwppwprnqu.public.blob.vercel-storage.com/nsk-w9fFwBBmLDLxrB896I4xqngTUEEovS.png",
-        width: 1200,
-        height: 630,
-        alt: "Next.js Starter Kit",
-      },
-    ],
+      "Come back to yourself in 3 quiet minutes. A private reset you can do anywhere. No journaling. No talking. No explaining.",
+    url: "https://www.anchorreset.com/",
+    siteName: "Anchor",
     locale: "en-US",
     type: "website",
   },
@@ -32,8 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`font-[-apple-system,BlinkMacSystemFont]antialiased`}>
+    <html lang="en" suppressHydrationWarning className="m-0 p-0">
+      <body
+        className={`${lora.variable} ${manrope.variable} font-anchor-sans antialiased m-0 p-0`}
+        style={{ backgroundColor: 'rgb(253 251 247 / var(--tw-bg-opacity, 1))' }}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -45,6 +62,17 @@ export default function RootLayout({
           <Toaster />
           <Analytics />
         </ThemeProvider>
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
       </body>
     </html>
   );
