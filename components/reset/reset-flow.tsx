@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import type { Reset } from "@/lib/resets/types";
 import { clearResetProgress, getResetProgress, saveResetProgress } from "@/lib/resets/progress";
 import { Completion } from "./completion";
@@ -17,12 +16,12 @@ type ResetFlowProps = {
 
 export function ResetFlow({ reset }: ResetFlowProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [hasMounted, setHasMounted] = useState(false);
   const [started, setStarted] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
   const [savedStepIndex, setSavedStepIndex] = useState<number | null>(null);
   const [isComplete, setIsComplete] = useState(false);
+  const [isResumedFlow, setIsResumedFlow] = useState(false);
 
   const totalSteps = reset.steps.length;
   const currentStep = reset.steps[stepIndex];
@@ -33,7 +32,6 @@ export function ResetFlow({ reset }: ResetFlowProps) {
       savedStepIndex < totalSteps,
     [savedStepIndex, totalSteps],
   );
-  const shouldAutoResume = searchParams.get("resume") === "1";
 
   useEffect(() => {
     setHasMounted(true);
@@ -46,6 +44,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setStepIndex(0);
     setSavedStepIndex(null);
     setIsComplete(false);
+    setIsResumedFlow(false);
   }, [reset.id]);
 
   useEffect(() => {
@@ -69,27 +68,20 @@ export function ResetFlow({ reset }: ResetFlowProps) {
   }, [isComplete, reset.id, started, stepIndex]);
 
   useEffect(() => {
-    if (!hasMounted || !shouldAutoResume || started || isComplete) return;
-    if (!canResume || savedStepIndex === null) return;
+    if (!hasMounted || started || isComplete) return;
+    if (savedStepIndex === null) return;
+    if (savedStepIndex < 0 || savedStepIndex >= totalSteps) return;
 
     setStarted(true);
     setStepIndex(savedStepIndex);
-    router.replace(`/reset/${reset.id}`);
-  }, [
-    canResume,
-    hasMounted,
-    isComplete,
-    reset.id,
-    router,
-    savedStepIndex,
-    shouldAutoResume,
-    started,
-  ]);
+    setIsResumedFlow(true);
+  }, [hasMounted, isComplete, savedStepIndex, started, totalSteps]);
 
   function handleBegin() {
     setStarted(true);
     setIsComplete(false);
     setStepIndex(0);
+    setIsResumedFlow(false);
     saveResetProgress(reset.id, 0);
   }
 
@@ -98,14 +90,16 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setStarted(true);
     setIsComplete(false);
     setStepIndex(savedStepIndex);
+    setIsResumedFlow(savedStepIndex > 0);
   }
 
-  function handleStartOverFromIntroHint() {
+  function handleStartOver() {
     clearResetProgress(reset.id);
     setSavedStepIndex(null);
     setStepIndex(0);
     setStarted(false);
     setIsComplete(false);
+    setIsResumedFlow(false);
   }
 
   function handleBack() {
@@ -140,6 +134,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setStarted(true);
     setStepIndex(0);
     setSavedStepIndex(0);
+    setIsResumedFlow(false);
     saveResetProgress(reset.id, 0);
   }
 
@@ -165,30 +160,8 @@ export function ResetFlow({ reset }: ResetFlowProps) {
           </div>
         </section>
 
-        {hasMounted && canResume ? (
-          <div className="pt-1">
-            <p className="text-sm leading-6 text-anchor-text-muted">
-              You left off at Step {savedStepIndex! + 1} of {totalSteps}.{" "}
-              <button
-                type="button"
-                onClick={handleStartOverFromIntroHint}
-                className="cursor-pointer rounded-md text-anchor-text-body transition-colors hover:text-anchor-text-main active:text-anchor-text-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
-              >
-                Start over
-              </button>
-            </p>
-          </div>
-        ) : null}
-
         <ResetFooterActions
-          leftAction={
-            <Link
-              href="/reset"
-              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-white/70 px-4 text-sm font-medium text-anchor-text-main hover:bg-stone-50 active:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
-            >
-              Back
-            </Link>
-          }
+          leftAction={undefined}
           rightAction={
             <button
               type="button"
@@ -213,12 +186,39 @@ export function ResetFlow({ reset }: ResetFlowProps) {
       {currentStep ? (
         <StepCard step={currentStep} stepNumber={stepIndex + 1} totalSteps={totalSteps} />
       ) : null}
-      <ResetNav
-        onBack={handleBack}
-        onNext={handleNext}
-        disableBack={stepIndex === 0}
-        nextLabel={stepIndex === totalSteps - 1 ? "Finish" : "Next"}
-      />
+      {isResumedFlow ? (
+        <ResetFooterActions
+          leftAction={
+            <button
+              type="button"
+              onClick={handleStartOver}
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-white/70 px-4 text-sm font-medium text-anchor-text-main hover:bg-stone-50 active:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+            >
+              Restart reset
+            </button>
+          }
+          rightAction={
+            <button
+              type="button"
+              onClick={handleNext}
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-anchor-primary px-5 text-sm font-medium text-white transition-colors hover:bg-anchor-primary-hover active:bg-anchor-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+            >
+              {stepIndex === totalSteps - 1
+                ? "Finish"
+                : savedStepIndex !== null && stepIndex === savedStepIndex
+                  ? "Continue"
+                  : "Next"}
+            </button>
+          }
+        />
+      ) : (
+        <ResetNav
+          onBack={handleBack}
+          onNext={handleNext}
+          disableBack={stepIndex === 0}
+          nextLabel={stepIndex === totalSteps - 1 ? "Finish" : "Next"}
+        />
+      )}
     </div>
   );
 }

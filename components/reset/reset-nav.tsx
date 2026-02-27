@@ -15,16 +15,15 @@ export function ResetNav({
 }: ResetNavProps) {
   return (
     <ResetFooterActions
-      leftAction={
+      leftAction={!disableBack ? (
         <button
           type="button"
           onClick={onBack}
-          disabled={disableBack}
-          className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-white/70 px-4 text-sm font-medium text-anchor-text-main transition-colors hover:bg-stone-50 active:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-white/70 px-4 text-sm font-medium text-anchor-text-main transition-colors hover:bg-stone-50 active:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
         >
           Back
         </button>
-      }
+      ) : undefined}
       rightAction={
         <button
           type="button"

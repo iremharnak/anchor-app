@@ -24,16 +24,16 @@ export function ResetList({ resets }: ResetListProps) {
   }, [resets]);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-anchor-highlight/20 bg-anchor-surface/70">
-      <ul aria-label="Reset list">
-        {resets.map((reset, index) => (
+    <div>
+      <ul aria-label="Reset list" className="space-y-2.5 md:space-y-2">
+        {resets.map((reset) => (
           <li
             key={reset.id}
-            className={index < resets.length - 1 ? "border-b border-anchor-highlight/15" : undefined}
+            className="overflow-hidden rounded-xl border border-anchor-highlight/20 bg-anchor-surface/65"
           >
             <Link
               href={`/reset/${reset.id}`}
-              className="group block rounded-none px-4 py-5 transition-all duration-150 hover:bg-anchor-surface/95 active:scale-[0.995] active:bg-anchor-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-anchor-primary/35 md:px-5 md:py-6"
+              className="group block px-4 py-5 transition-all duration-150 hover:bg-anchor-surface active:scale-[0.995] active:bg-anchor-highlight/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-anchor-primary/45 md:px-5 md:py-6"
               aria-label={`${reset.title}. ${reset.whenLine}. ${reset.durationLabel}`}
             >
               <div className="flex items-start justify-between gap-3">
