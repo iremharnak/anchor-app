@@ -18,7 +18,7 @@ export default async function ResetDetailPage({ params }: ResetPageProps) {
       title={reset.title}
       lead={reset.whenLine}
       backHref="/reset"
-      backLabel="Back to Resets"
+      backLabel="Back to all resets"
     >
       <ResetFlow key={reset.id} reset={reset} />
     </ResetPageShell>

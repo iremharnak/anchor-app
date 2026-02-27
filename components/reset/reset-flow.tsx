@@ -141,19 +141,19 @@ export function ResetFlow({ reset }: ResetFlowProps) {
   if (!started && !isComplete) {
     return (
       <div className="space-y-8 md:space-y-10">
-        <section className="rounded-2xl border border-stone-200/80 bg-anchor-surface/55 px-5 py-7 md:px-8 md:py-9">
+        <section className="rounded-2xl border border-slate-200 bg-white px-5 py-7 md:px-8 md:py-9">
           <div className="space-y-4 md:space-y-5">
-            <p className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-anchor-text-muted/75">
+            <p className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[#6B7280]/80">
               {reset.durationLabel}
             </p>
-            <h2 className="font-anchor-serif text-2xl md:text-[1.85rem] leading-tight text-anchor-text-main">
+            <h2 className="font-anchor-serif text-2xl md:text-[1.85rem] leading-tight text-[#111827]">
               {reset.title}
             </h2>
             <div className="max-w-[60ch] space-y-3 md:space-y-4">
-              <p className="font-anchor-sans text-base md:text-[1.0625rem] leading-8 md:leading-[1.8] text-anchor-text-body">
+              <p className="font-anchor-sans text-base md:text-[1.0625rem] leading-8 md:leading-[1.8] text-[#111827]">
                 {reset.whenLine}
               </p>
-              <p className="text-sm leading-6 text-anchor-text-muted/90">
+              <p className="text-sm leading-6 text-[#6B7280]">
                 Four short sections: Pause, Orient, Center, Close.
               </p>
             </div>
@@ -166,7 +166,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
             <button
               type="button"
               onClick={hasMounted && canResume ? handleResume : handleBegin}
-              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-anchor-primary px-5 text-sm font-medium text-white transition-colors hover:bg-anchor-primary-hover active:bg-anchor-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:-translate-y-px hover:bg-[#1a1614] active:translate-y-0 active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
             >
               {hasMounted && canResume ? "Continue" : "Begin"}
             </button>
@@ -201,7 +201,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
             <button
               type="button"
               onClick={handleNext}
-              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-anchor-primary px-5 text-sm font-medium text-white transition-colors hover:bg-anchor-primary-hover active:bg-anchor-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:-translate-y-px hover:bg-[#1a1614] active:translate-y-0 active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
             >
               {stepIndex === totalSteps - 1
                 ? "Finish"

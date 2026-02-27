@@ -29,25 +29,25 @@ export function ResetList({ resets }: ResetListProps) {
         {resets.map((reset) => (
           <li
             key={reset.id}
-            className="overflow-hidden rounded-xl border border-anchor-highlight/20 bg-anchor-surface/65"
+            className="overflow-hidden rounded-xl border border-slate-200 bg-white"
           >
             <Link
               href={`/reset/${reset.id}`}
-              className="group block px-4 py-5 transition-all duration-150 hover:bg-anchor-surface active:scale-[0.995] active:bg-anchor-highlight/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-anchor-primary/45 md:px-5 md:py-6"
+              className="group block px-4 py-5 transition-all duration-150 hover:bg-slate-50 active:scale-[0.995] active:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-anchor-primary/45 md:px-5 md:py-6"
               aria-label={`${reset.title}. ${reset.whenLine}. ${reset.durationLabel}`}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <h2 className="font-anchor-serif text-lg md:text-xl leading-tight text-anchor-text-main">
+                  <h2 className="font-anchor-serif text-lg md:text-xl leading-tight text-[#111827]">
                     {reset.title}
                   </h2>
-                  <p className="mt-2 font-anchor-sans text-sm leading-6 md:leading-7 text-anchor-text-body">
+                  <p className="mt-2 font-anchor-sans text-sm leading-6 md:leading-7 text-[#374151]">
                     {reset.whenLine}
                   </p>
                 </div>
-                <div className="shrink-0 flex flex-col items-end gap-1 pt-0.5 text-anchor-text-muted/90">
+                <div className="shrink-0 flex flex-col items-end gap-1 pt-0.5 text-[#6B7280]">
                   {resumeIds.has(reset.id) ? (
-                    <span className="rounded-full border border-anchor-highlight/30 bg-anchor-canvas/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-anchor-text-muted">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B7280]">
                       Resume
                     </span>
                   ) : null}
