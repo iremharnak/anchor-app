@@ -40,7 +40,7 @@ export default function AnchorSignupForm() {
         onSubmit={() => setShowSuccess(false)}
       >
         <label
-          className="text-sm text-anchor-text-main dark:text-gray-200 text-left"
+          className="text-sm text-anchor-text-main text-left"
           htmlFor={`cta-email-${formId}`}
         >
           Where should I send it?
@@ -50,7 +50,7 @@ export default function AnchorSignupForm() {
           id={`cta-email-${formId}`}
           name="fields[email]"
           required
-          className="w-full h-16 rounded-xl border border-gray-200 dark:border-gray-700 bg-anchor-surface dark:bg-anchor-surface-dark px-4 text-lg placeholder:text-gray-400 focus:border-anchor-primary focus:ring-1 focus:ring-anchor-primary focus:outline-none transition-all shadow-inner"
+          className="w-full h-16 rounded-xl border border-gray-200 bg-anchor-surface px-4 text-lg placeholder:text-gray-400 focus:border-anchor-primary focus:ring-1 focus:ring-anchor-primary focus:outline-none transition-all shadow-inner"
           placeholder="you@example.com"
           type="email"
           autoComplete="email"
@@ -60,14 +60,14 @@ export default function AnchorSignupForm() {
         <input type="hidden" name="anticsrf" value="true" />
 
         <button
-          className="h-16 w-full rounded-xl bg-[#2C2825] hover:bg-[#1a1614] dark:bg-white text-white dark:text-black font-medium text-lg transition-colors flex items-center justify-center"
+          className="h-16 w-full rounded-xl bg-[#2C2825] hover:bg-[#1a1614] text-white font-medium text-lg transition-colors flex items-center justify-center"
           type="submit"
         >
           <span>Send it to me</span>
         </button>
 
         {showSuccess ? (
-          <p className="text-sm text-anchor-text-body dark:text-gray-300 mt-1">
+          <p className="text-sm text-anchor-text-body mt-1">
             Check your inbox for the email (and your spam/promotions folder just in
             case).
           </p>
