@@ -49,12 +49,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="m-0 p-0">
       <body
         className={`${lora.variable} ${manrope.variable} font-anchor-sans antialiased m-0 p-0`}
-        style={{ backgroundColor: 'rgb(253 251 247 / var(--tw-bg-opacity, 1))' }}
+        style={{
+          backgroundColor: "rgb(253 251 247 / var(--tw-bg-opacity, 1))",
+          colorScheme: "light",
+        }}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          enableSystem={false}
           forcedTheme="light"
           disableTransitionOnChange
         >
