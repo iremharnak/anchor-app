@@ -166,7 +166,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
             <button
               type="button"
               onClick={hasMounted && canResume ? handleResume : handleBegin}
-              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:-translate-y-px hover:bg-[#1a1614] active:translate-y-0 active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:bg-[#1a1614] active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
             >
               {hasMounted && canResume ? "Continue" : "Begin"}
             </button>
@@ -201,7 +201,7 @@ export function ResetFlow({ reset }: ResetFlowProps) {
             <button
               type="button"
               onClick={handleNext}
-              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:-translate-y-px hover:bg-[#1a1614] active:translate-y-0 active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+              className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-all duration-150 hover:bg-[#1a1614] active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
             >
               {stepIndex === totalSteps - 1
                 ? "Finish"

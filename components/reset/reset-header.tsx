@@ -22,7 +22,7 @@ export function ResetHeader({
         <div>
           <Link
             href={backHref}
-            className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-4 text-sm font-medium text-white transition-all duration-150 hover:-translate-y-px hover:bg-[#1a1614] active:translate-y-0 active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
+            className="inline-flex h-11 min-w-[92px] cursor-pointer items-center justify-center rounded-xl bg-[#2C2825] px-4 text-sm font-medium text-white transition-all duration-150 hover:bg-[#1a1614] active:scale-[0.985] active:bg-[#120f0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
           >
             {backLabel}
           </Link>

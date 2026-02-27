@@ -35,7 +35,7 @@ export function ResetPageShell({
                 />
               </div>
             </div>
-            <div className="px-5 py-6 md:px-6 md:py-8">
+            <div className="px-5 pt-6 pb-8 md:px-6 md:pt-8 md:pb-12">
               <div className="space-y-7 md:space-y-9">{children}</div>
             </div>
           </div>
