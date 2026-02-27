@@ -19,9 +19,9 @@ const manrope = Manrope({
 export default function AnchorLanding() {
   return (
     <main
-      className={`anchor-landing ${lora.variable} ${manrope.variable} min-h-[max(884px,100dvh)] bg-anchor-canvas dark:bg-anchor-canvas-dark font-anchor-sans text-anchor-text-main dark:text-gray-100 antialiased selection:bg-anchor-primary/20 selection:text-anchor-primary`}
+      className={`anchor-landing ${lora.variable} ${manrope.variable} min-h-[max(884px,100dvh)] bg-anchor-canvas font-anchor-sans text-anchor-text-main antialiased selection:bg-anchor-primary/20 selection:text-anchor-primary`}
     >
-      <div className="relative flex h-auto min-h-screen w-full max-w-md md:max-w-[880px] lg:max-w-[980px] mx-auto flex-col overflow-x-hidden border-x border-stone-200 dark:border-stone-800/50 shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)] md:border-x-0 md:bg-anchor-canvas dark:md:bg-anchor-canvas-dark md:rounded-2xl md:my-10 md:border md:border-stone-200 dark:md:border-stone-800/50 md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)]">
+      <div className="relative flex h-auto min-h-screen w-full max-w-md md:max-w-[880px] lg:max-w-[980px] mx-auto flex-col overflow-x-hidden border-x border-stone-200 shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)] md:border-x-0 md:bg-anchor-canvas md:rounded-2xl md:my-10 md:border md:border-stone-200 md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)]">
         <header className="px-6 pt-6 md:pt-10">
           <div className="flex items-center justify-between gap-4">
             <div className="text-sm font-medium tracking-wide text-anchor-text-body text-left">
@@ -39,11 +39,11 @@ export default function AnchorLanding() {
           </h1>
 
           <div className="space-y-2">
-            <h2 className="text-lg font-light text-anchor-text-body dark:text-gray-400 leading-relaxed max-w-[52rem]">
+            <h2 className="text-lg font-light text-anchor-text-body leading-relaxed max-w-[52rem]">
               A short email you use when your mind won’t stop replaying a draining conversation.
               No journaling. No talking. No explaining.
             </h2>
-            <p className="text-sm md:text-base text-anchor-text-body dark:text-gray-300 leading-relaxed max-w-[52rem]">
+            <p className="text-sm md:text-base text-anchor-text-body leading-relaxed max-w-[52rem]">
               Use this in the 3 minutes after a draining call or visit, when your thoughts keep looping and you just want to feel like yourself again.
             </p>
           </div>
@@ -57,28 +57,28 @@ export default function AnchorLanding() {
             </a>
           </div>
 
-          <div className="relative mt-2 rounded-2xl border border-stone-200/70 dark:border-stone-700/50 bg-gradient-to-br from-anchor-surface/40 to-anchor-highlight/30 dark:from-anchor-surface-dark/40 dark:to-anchor-highlight-dark/30 overflow-hidden">
-            <div className="h-[3px] bg-anchor-primary/25 dark:bg-anchor-primary/30"></div>
+          <div className="relative mt-2 rounded-2xl border border-stone-200/70 bg-gradient-to-br from-anchor-surface/40 to-anchor-highlight/30 overflow-hidden">
+            <div className="h-[3px] bg-anchor-primary/25"></div>
 
             <div className="p-5 md:p-6 space-y-3 md:space-y-4">
               <div>
-                <p className="text-base md:text-lg font-semibold text-anchor-text-main dark:text-gray-100 leading-snug">
+                <p className="text-base md:text-lg font-semibold text-anchor-text-main leading-snug">
                   Built by someone who is often the strong one.
                 </p>
               </div>
 
-              <div className="h-px bg-stone-200/50 dark:bg-stone-700/50"></div>
+              <div className="h-px bg-stone-200/50"></div>
 
               <div>
-                <p className="text-base md:text-lg text-anchor-text-body dark:text-gray-300 leading-relaxed">
+                <p className="text-base md:text-lg text-anchor-text-body leading-relaxed">
                   The one who holds space, stays calm, and keeps going.
                 </p>
               </div>
 
-              <div className="h-px bg-stone-200/50 dark:bg-stone-700/50"></div>
+              <div className="h-px bg-stone-200/50"></div>
 
               <div>
-                <p className="text-base md:text-lg font-medium text-anchor-text-main dark:text-gray-100 leading-relaxed">
+                <p className="text-base md:text-lg font-medium text-anchor-text-main leading-relaxed">
                   The next draining conversation is coming. Have this ready.
                 </p>
               </div>
@@ -102,11 +102,11 @@ export default function AnchorLanding() {
             </p>
           </div>
 
-          <h3 className="text-base font-bold leading-relaxed text-anchor-text-main dark:text-gray-200 mt-2">
+          <h3 className="text-base font-bold leading-relaxed text-anchor-text-main mt-2">
             This is for you if:
           </h3>
 
-          <ul className="list-disc list-inside space-y-2 text-base font-anchor-sans leading-relaxed text-anchor-text-body dark:text-gray-300">
+          <ul className="list-disc list-inside space-y-2 text-base font-anchor-sans leading-relaxed text-anchor-text-body">
             <li>
               You replay conversations in your head long after they’re over
             </li>
@@ -125,53 +125,53 @@ export default function AnchorLanding() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 md:items-stretch">
-            <div className="rounded-2xl bg-[#EEF1F6] dark:bg-white/5 p-8 h-full flex flex-col">
-              <h3 className="font-anchor-sans text-xs font-bold uppercase tracking-widest text-anchor-primary dark:text-teal-200/70 opacity-80 mb-6">
+            <div className="rounded-2xl bg-[#EEF1F6] p-8 h-full flex flex-col">
+              <h3 className="font-anchor-sans text-xs font-bold uppercase tracking-widest text-anchor-primary opacity-80 mb-6">
                 What this is
               </h3>
 
               <div className="flex flex-col gap-4">
                 <div className="flex gap-4 items-start">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-anchor-primary mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 text-anchor-primary mt-0.5">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-200">
+                  <p className="text-base text-anchor-text-main">
                     A private reset you can do anywhere
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-anchor-primary mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 text-anchor-primary mt-0.5">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-200">
+                  <p className="text-base text-anchor-text-main">
                     Takes about <strong>3 minutes</strong>
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-anchor-primary mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 text-anchor-primary mt-0.5">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-200">
+                  <p className="text-base text-anchor-text-main">
                     Nothing to write
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-anchor-primary mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 text-anchor-primary mt-0.5">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-200">
+                  <p className="text-base text-anchor-text-main">
                     Nothing to fix
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-anchor-primary mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-50 text-anchor-primary mt-0.5">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-200">
+                  <p className="text-base text-anchor-text-main">
                     Two quiet questions to help you re orient
                   </p>
                 </div>
@@ -180,53 +180,53 @@ export default function AnchorLanding() {
               <div className="mt-auto"></div>
             </div>
 
-            <div className="rounded-2xl bg-anchor-surface dark:bg-anchor-surface-dark p-8 h-full flex flex-col">
+            <div className="rounded-2xl bg-anchor-surface p-8 h-full flex flex-col">
               <h3 className="font-anchor-sans text-xs font-bold uppercase tracking-widest text-anchor-text-muted opacity-80 mb-6">
                 What this is not
               </h3>
 
               <div className="flex flex-col gap-4">
                 <div className="flex gap-4 items-start opacity-75">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-anchor-text-muted mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 text-anchor-text-muted mt-0.5">
                     <X className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-300">
+                  <p className="text-base text-anchor-text-main">
                     Not therapy
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start opacity-75">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-anchor-text-muted mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 text-anchor-text-muted mt-0.5">
                     <X className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-300">
+                  <p className="text-base text-anchor-text-main">
                     Not journaling
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start opacity-75">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-anchor-text-muted mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 text-anchor-text-muted mt-0.5">
                     <X className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-300">
+                  <p className="text-base text-anchor-text-main">
                     Not habit building
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start opacity-75">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-anchor-text-muted mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 text-anchor-text-muted mt-0.5">
                     <X className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-300">
+                  <p className="text-base text-anchor-text-main">
                     Not a commitment
                   </p>
                 </div>
 
                 <div className="flex gap-4 items-start opacity-75">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-anchor-text-muted mt-0.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100 text-anchor-text-muted mt-0.5">
                     <X className="h-4 w-4" />
                   </div>
-                  <p className="text-base text-anchor-text-main dark:text-gray-300">
+                  <p className="text-base text-anchor-text-main">
                     Not something you need to keep up with
                   </p>
                 </div>
@@ -241,13 +241,13 @@ export default function AnchorLanding() {
 
         <section
           id="cta"
-          className="px-6 py-10 md:py-12 bg-anchor-canvas mt-8 md:mt-10 border-t border-stone-100 dark:border-white/5"
+          className="px-6 py-10 md:py-12 bg-anchor-canvas mt-8 md:mt-10 border-t border-stone-100"
         >
           <div className="max-w-[520px] mx-auto text-center space-y-4">
-            <h4 className="text-xl font-semibold text-anchor-text-main dark:text-white">
+            <h4 className="text-xl font-semibold text-anchor-text-main">
               Try the quiet 3 minute reset
             </h4>
-            <p className="text-sm text-anchor-text-muted dark:text-gray-400">
+            <p className="text-sm text-anchor-text-muted">
               For when you have been around family and feel disconnected from
               yourself.
             </p>
@@ -256,7 +256,7 @@ export default function AnchorLanding() {
               <p className="text-sm font-medium text-anchor-text-main">
                 What you&apos;ll receive
               </p>
-              <p className="text-sm text-anchor-text-body dark:text-gray-400 leading-relaxed">
+              <p className="text-sm text-anchor-text-body leading-relaxed">
                 A short email with two grounding questions you can use immediately.
                 No reply required.
               </p>
@@ -278,7 +278,7 @@ export default function AnchorLanding() {
           demanding moments.
         </p>
 
-        <footer className="p-6 text-center border-t border-gray-100 dark:border-gray-800">
+        <footer className="p-6 text-center border-t border-gray-100">
           <p className="text-xs text-anchor-text-muted font-medium">
             © 2026 Anchor. Quiet mental support for emotionally demanding moments.
           </p>
