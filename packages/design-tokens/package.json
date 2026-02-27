@@ -1,0 +1,13 @@
+{
+  "name": "@anchor/design-tokens",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/native.ts",
+  "types": "./src/native.ts",
+  "exports": {
+    ".": "./src/tokens.ts",
+    "./tokens": "./src/tokens.ts",
+    "./web": "./src/web.ts",
+    "./native": "./src/native.ts"
+  }
+}

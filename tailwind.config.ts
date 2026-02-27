@@ -1,4 +1,9 @@
 import type { Config } from "tailwindcss";
+import {
+  anchorTailwindColors,
+  anchorTailwindFontFamily,
+  anchorTailwindRadii,
+} from "./packages/design-tokens/src/web";
 
 const config = {
   darkMode: ["class", ".dark"],
@@ -62,43 +67,10 @@ const config = {
           5: "hsl(var(--chart-5))",
         },
         // Anchor landing page tokens (kept namespaced to avoid clobbering the app theme)
-        anchor: {
-          canvas: "#FDFBF7",
-          "canvas-dark": "#1A1A1A",
-          primary: "#4A5D5E",
-          "primary-hover": "#364546",
-          surface: "#F2F0E9",
-          "surface-dark": "#262626",
-          highlight: "#E3EDE6",
-          "highlight-dark": "#1F2E2E",
-          "text-main": "#2C2825",
-          "text-body": "#595552",
-          "text-muted": "#8C8885",
-        },
+        anchor: anchorTailwindColors,
       },
       fontFamily: {
-        "anchor-sans": [
-          "var(--font-anchor-manrope)",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "sans-serif",
-        ],
-        "anchor-serif": [
-          "var(--font-anchor-lora)",
-          "ui-serif",
-          "Georgia",
-          "Cambria",
-          "Times New Roman",
-          "Times",
-          "serif",
-        ],
+        ...anchorTailwindFontFamily,
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -106,8 +78,7 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
 
         // Anchor landing page uses Tailwind CDN config overriding these radii
-        xl: "1rem",
-        "2xl": "1.5rem",
+        ...anchorTailwindRadii,
       },
       keyframes: {
         "accordion-down": {

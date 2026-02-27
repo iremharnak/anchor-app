@@ -1,5 +1,6 @@
 import { Lora, Manrope } from "next/font/google";
 import { Check, X } from "lucide-react";
+import Link from "next/link";
 import AnchorSignupForm from "@/components/anchor/anchor-signup-form";
 
 const lora = Lora({
@@ -23,8 +24,16 @@ export default function AnchorLanding() {
     >
       <div className="relative flex h-auto min-h-screen w-full max-w-md md:max-w-[880px] lg:max-w-[980px] mx-auto flex-col overflow-x-hidden border-x border-stone-200 dark:border-stone-800/50 shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)] md:border-x-0 md:bg-anchor-canvas dark:md:bg-anchor-canvas-dark md:rounded-2xl md:my-10 md:border md:border-stone-200 dark:md:border-stone-800/50 md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)]">
         <header className="px-6 pt-6 md:pt-10">
-          <div className="text-sm font-medium tracking-wide text-anchor-text-body text-left">
-            Anchor
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-sm font-medium tracking-wide text-anchor-text-body text-left">
+              Anchor
+            </div>
+            {/* <Link
+              href="/reset"
+              className="text-sm text-anchor-text-body hover:text-anchor-text-main underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40 rounded-sm"
+            >
+              Open resets
+            </Link> */}
           </div>
           <div className="text-xs font-medium tracking-widest text-anchor-text-muted mt-3 mb-3">
             PRIVATE RESET · 3 MINUTES · NO JOURNALING
