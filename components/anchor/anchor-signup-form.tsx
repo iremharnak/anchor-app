@@ -8,6 +8,9 @@ const MAILERLITE_ACTION =
 export default function AnchorSignupForm() {
   const formId = useId();
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  // Track whether a submission has been made to avoid false-positive on initial iframe load
+  const submittedRef = useRef(false);
+  const hasHandledSubmitRef = useRef(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
@@ -15,12 +18,22 @@ export default function AnchorSignupForm() {
     if (!iframe) return;
 
     const handleLoad = () => {
+      if (!submittedRef.current) return;
+      if (hasHandledSubmitRef.current) return;
+      hasHandledSubmitRef.current = true;
+      submittedRef.current = false;
       setShowSuccess(true);
     };
 
     iframe.addEventListener("load", handleLoad);
     return () => iframe.removeEventListener("load", handleLoad);
   }, []);
+
+  function handleSubmit() {
+    submittedRef.current = true;
+    hasHandledSubmitRef.current = false;
+    setShowSuccess(false);
+  }
 
   return (
     <>
@@ -37,13 +50,13 @@ export default function AnchorSignupForm() {
         method="POST"
         action={MAILERLITE_ACTION}
         target={`ml_hidden_iframe_${formId}`}
-        onSubmit={() => setShowSuccess(false)}
+        onSubmit={handleSubmit}
       >
         <label
           className="text-sm text-anchor-text-main text-left"
           htmlFor={`cta-email-${formId}`}
         >
-          Where should I send it?
+          Your email address
         </label>
 
         <input
@@ -60,16 +73,16 @@ export default function AnchorSignupForm() {
         <input type="hidden" name="anticsrf" value="true" />
 
         <button
-          className="h-16 w-full rounded-xl bg-[#2C2825] hover:bg-[#1a1614] text-white font-medium text-lg transition-colors flex items-center justify-center"
+          className="h-16 w-full cursor-pointer rounded-xl bg-[#2C2825] hover:bg-[#1a1614] text-white font-medium text-lg transition-colors flex items-center justify-center"
           type="submit"
         >
-          <span>Send it to me</span>
+          <span>Get access to the resets</span>
         </button>
 
         {showSuccess ? (
-          <p className="text-sm text-anchor-text-body mt-1">
-            Check your inbox for the email (and your spam/promotions folder just in
-            case).
+          <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-900">
+            Check your inbox for your private link. If it does not show up in a
+            few minutes, check spam or promotions.
           </p>
         ) : null}
       </form>

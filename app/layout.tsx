@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import GoogleAnalyticsPageview from "@/components/analytics/google-analytics-pageview";
 import type { Metadata } from "next";
 import { Lora, Manrope } from "next/font/google";
 import Script from "next/script";
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="m-0 p-0">
+    <html lang="en" suppressHydrationWarning className="m-0 p-0 scroll-smooth">
       <body
         className={`${lora.variable} ${manrope.variable} font-anchor-sans antialiased m-0 p-0`}
         style={{
@@ -64,6 +65,7 @@ export default function RootLayout({
           {children}
           <Toaster />
           <Analytics />
+          <GoogleAnalyticsPageview measurementId={GA_MEASUREMENT_ID} />
         </ThemeProvider>
 
         <Script
