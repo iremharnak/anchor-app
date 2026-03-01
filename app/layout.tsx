@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import GoogleAnalyticsPageview from "@/components/analytics/google-analytics-pageview";
 import type { Metadata } from "next";
@@ -65,7 +66,9 @@ export default function RootLayout({
           {children}
           <Toaster />
           <Analytics />
-          <GoogleAnalyticsPageview measurementId={GA_MEASUREMENT_ID} />
+          <Suspense fallback={null}>
+            <GoogleAnalyticsPageview measurementId={GA_MEASUREMENT_ID} />
+          </Suspense>
         </ThemeProvider>
 
         <Script
