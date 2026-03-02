@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { captureEvent } from "@/lib/analytics/posthog";
 import type { Reset } from "@/lib/resets/types";
 import { clearResetProgress, getResetProgress, saveResetProgress } from "@/lib/resets/progress";
 import { Completion } from "./completion";
@@ -36,6 +37,14 @@ export function ResetFlow({ reset }: ResetFlowProps) {
   useEffect(() => {
     setHasMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+    captureEvent("reset_opened", {
+      reset_id: reset.id,
+      reset_title: reset.title,
+    });
+  }, [hasMounted, reset.id, reset.title]);
 
   useEffect(() => {
     // Route changes between /reset/[id] can preserve client component state;
@@ -75,6 +84,10 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setStarted(true);
     setStepIndex(savedStepIndex);
     setIsResumedFlow(true);
+    captureEvent("reset_resumed", {
+      reset_id: reset.id,
+      step_index: savedStepIndex,
+    });
   }, [hasMounted, isComplete, savedStepIndex, started, totalSteps]);
 
   function handleBegin() {
@@ -83,6 +96,9 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setStepIndex(0);
     setIsResumedFlow(false);
     saveResetProgress(reset.id, 0);
+    captureEvent("reset_started", {
+      reset_id: reset.id,
+    });
   }
 
   function handleResume() {
@@ -91,6 +107,10 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     setIsComplete(false);
     setStepIndex(savedStepIndex);
     setIsResumedFlow(savedStepIndex > 0);
+    captureEvent("reset_resumed", {
+      reset_id: reset.id,
+      step_index: savedStepIndex,
+    });
   }
 
   function handleStartOver() {
@@ -118,6 +138,9 @@ export function ResetFlow({ reset }: ResetFlowProps) {
     if (stepIndex >= totalSteps - 1) {
       setIsComplete(true);
       saveResetProgress(reset.id, totalSteps);
+      captureEvent("reset_completed", {
+        reset_id: reset.id,
+      });
       return;
     }
 

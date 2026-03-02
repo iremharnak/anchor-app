@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { captureEvent } from "@/lib/analytics/posthog";
 
 export default function CopyLinkButton() {
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href).then(() => {
+      captureEvent("copy_link_clicked");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });

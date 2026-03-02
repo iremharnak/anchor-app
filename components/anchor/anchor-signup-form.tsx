@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { captureEvent } from "@/lib/analytics/posthog";
 
 const MAILERLITE_ACTION =
   "https://assets.mailerlite.com/jsonp/2031056/forms/176313741641516643/subscribe";
@@ -23,6 +24,9 @@ export default function AnchorSignupForm() {
       hasHandledSubmitRef.current = true;
       submittedRef.current = false;
       setShowSuccess(true);
+      captureEvent("email_submit_success", {
+        form_location: "email_capture",
+      });
     };
 
     iframe.addEventListener("load", handleLoad);
@@ -33,6 +37,9 @@ export default function AnchorSignupForm() {
     submittedRef.current = true;
     hasHandledSubmitRef.current = false;
     setShowSuccess(false);
+    captureEvent("landing_cta_clicked", {
+      location: "email_capture",
+    });
   }
 
   return (

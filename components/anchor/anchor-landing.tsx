@@ -1,4 +1,5 @@
 import { Lora, Manrope } from "next/font/google";
+import TrackedAnchor from "@/components/analytics/tracked-anchor";
 import AnchorSignupForm from "@/components/anchor/anchor-signup-form";
 import CopyLinkButton from "@/components/anchor/copy-link-button";
 
@@ -52,19 +53,23 @@ export default function AnchorLanding() {
           </p>
 
           <div className="flex flex-col items-start gap-3">
-            <a
+            <TrackedAnchor
               href="#email-capture"
+              eventName="landing_cta_clicked"
+              properties={{ location: "hero" }}
               className="inline-flex h-10 items-center justify-center rounded-xl bg-[#2C2825] px-5 text-sm font-medium text-white transition-colors hover:bg-[#1a1614]"
             >
               Get the private link
-            </a>
+            </TrackedAnchor>
             <div className="flex flex-col items-start">
-              <a
+              <TrackedAnchor
                 href="#feedback"
+                eventName="feedback_cta_clicked"
+                properties={{ location: "hero" }}
                 className="inline-flex h-10 items-center justify-center rounded-xl border border-stone-200 bg-white/70 px-5 text-sm font-medium text-anchor-text-main transition-colors hover:bg-stone-50 active:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-anchor-primary/40"
               >
                 Share feedback
-              </a>
+              </TrackedAnchor>
               <p className="mt-1 text-xs text-anchor-text-muted">
                 Already tried it?
               </p>
@@ -189,14 +194,16 @@ export default function AnchorLanding() {
               reaction, even one sentence, I&apos;d love to hear it.
             </p>
             <div className="mt-6">
-              <a
+              <TrackedAnchor
                 href={FEEDBACK_URL}
+                eventName="feedback_cta_clicked"
+                properties={{ location: "feedback_section" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-anchor-text-main font-medium text-sm px-5 h-10 transition-colors"
               >
                 Share feedback
-              </a>
+              </TrackedAnchor>
             </div>
             <p className="text-xs text-anchor-text-muted mt-2">
               This is not therapy or medical care.
