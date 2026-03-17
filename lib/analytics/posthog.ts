@@ -6,8 +6,8 @@ let isInitialized = false;
 
 function getConfig() {
   return {
-    key: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    key: process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim(),
+    host: process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim(),
   };
 }
 
