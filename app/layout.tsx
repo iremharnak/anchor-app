@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import GoogleAnalyticsPageview from "@/components/analytics/google-analytics-pageview";
 import PostHogInit from "@/components/analytics/posthog-init";
+import PostHogPageview from "@/components/analytics/posthog-pageview";
 import type { Metadata } from "next";
 import { Lora, Manrope } from "next/font/google";
 import Script from "next/script";
@@ -68,6 +69,9 @@ export default function RootLayout({
           <Toaster />
           <Analytics />
           <PostHogInit />
+          <Suspense fallback={null}>
+            <PostHogPageview />
+          </Suspense>
           <Suspense fallback={null}>
             <GoogleAnalyticsPageview measurementId={GA_MEASUREMENT_ID} />
           </Suspense>

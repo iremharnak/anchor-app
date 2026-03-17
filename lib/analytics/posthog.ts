@@ -40,3 +40,11 @@ export function captureEvent(
   posthog.capture(eventName, properties);
 }
 
+export function capturePageview(
+  properties?: Record<string, string | number | boolean | null | undefined>,
+) {
+  if (typeof window === "undefined") return;
+  initPostHog();
+  if (!isInitialized) return;
+  posthog.capture("$pageview", properties);
+}
