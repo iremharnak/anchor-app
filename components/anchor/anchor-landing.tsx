@@ -1,27 +1,13 @@
-import { Lora, Manrope } from "next/font/google";
 import TrackedAnchor from "@/components/analytics/tracked-anchor";
 import AnchorSignupForm from "@/components/anchor/anchor-signup-form";
 import CopyLinkButton from "@/components/anchor/copy-link-button";
-
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-anchor-lora",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-anchor-manrope",
-});
 
 const FEEDBACK_URL = "https://tally.so/r/5BdvAN";
 
 export default function AnchorLanding() {
   return (
     <main
-      className={`anchor-landing ${lora.variable} ${manrope.variable} min-h-[max(884px,100dvh)] bg-anchor-canvas font-anchor-sans text-anchor-text-main antialiased selection:bg-anchor-primary/20 selection:text-anchor-primary`}
+      className="anchor-landing min-h-[max(884px,100dvh)] bg-anchor-canvas font-anchor-sans text-anchor-text-main antialiased selection:bg-anchor-primary/20 selection:text-anchor-primary"
     >
       <div className="relative flex h-auto min-h-screen w-full max-w-md md:max-w-[880px] lg:max-w-[980px] mx-auto flex-col overflow-x-hidden border-x border-stone-200 shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)] md:border-x-0 md:bg-anchor-canvas md:rounded-2xl md:my-10 md:border md:border-stone-200 md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.05)]">
 
@@ -45,7 +31,7 @@ export default function AnchorLanding() {
 
           <p className="text-lg font-light text-anchor-text-body leading-relaxed max-w-[52rem]">
             Anchor is a small web app for the minutes after a hard conversation,
-            when your thoughts won&apos;t stop.
+            when your mind keeps replaying it.
           </p>
 
           <p className="text-sm md:text-base font-medium text-anchor-text-muted">
@@ -61,6 +47,9 @@ export default function AnchorLanding() {
             >
               Get the private link
             </TrackedAnchor>
+            <p className="text-xs text-anchor-text-muted">
+              Free to use. No login.
+            </p>
             <div className="flex flex-col items-start">
               <TrackedAnchor
                 href="#feedback"
@@ -106,7 +95,7 @@ export default function AnchorLanding() {
               What happens inside a reset.
             </h2>
             <p className="text-sm md:text-base text-anchor-text-body">
-              Each reset walks you through four quiet steps. That&apos;s it.
+              Each reset guides you through four quiet steps. That&apos;s it.
             </p>
           </div>
 
@@ -167,8 +156,8 @@ export default function AnchorLanding() {
                 Anchor is free to use.
               </p>
               <p className="text-sm md:text-base text-anchor-text-body leading-relaxed">
-                I’ll send you a private link to the 6 resets. Only meaningful
-                updates after that.
+                I’ll send you a private link to all 6 resets. After that, only
+                occasional meaningful updates.
               </p>
             </div>
             <div className="mt-6 text-left">
@@ -177,6 +166,44 @@ export default function AnchorLanding() {
             <p className="text-xs text-anchor-text-muted mt-2">
               One email for access. Unsubscribe anytime.
             </p>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="px-6 py-8 md:py-10 border-t border-stone-100">
+          <div className="max-w-[520px] mx-auto space-y-5">
+            <h2 className="text-xl md:text-2xl font-semibold text-anchor-text-main leading-snug">
+              Questions, answered quietly.
+            </h2>
+            <div className="space-y-4">
+              <div className="space-y-1">
+                <h3 className="text-sm md:text-base font-semibold text-anchor-text-main">
+                  What is Anchor?
+                </h3>
+                <p className="text-sm md:text-base text-anchor-text-body leading-relaxed">
+                  Anchor is a small web app with guided 3-minute resets for the
+                  minutes after a hard conversation, when your mind keeps
+                  replaying it.
+                </p>
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-sm md:text-base font-semibold text-anchor-text-main">
+                  How long does a reset take?
+                </h3>
+                <p className="text-sm md:text-base text-anchor-text-body leading-relaxed">
+                  About 3 quiet minutes.
+                </p>
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-sm md:text-base font-semibold text-anchor-text-main">
+                  Do I need to sign up?
+                </h3>
+                <p className="text-sm md:text-base text-anchor-text-body leading-relaxed">
+                  You only need to enter your email once to get the private
+                  link. There&apos;s no login.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
